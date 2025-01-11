@@ -45,11 +45,11 @@ weekNumberNow() {
 }
 
 weekDayNow() {
-  return kWeekDays[dateNow().weekday - 1];
+  return kWeekDays[weekNumberNow() - 1];
 }
 
 weekDayShortNow() {
-  return kWeekDaysShort[dateNow().weekday - 1];
+  return kWeekDaysShort[weekDayNow() - 1];
 }
 
 currentCompleteDate({String formatter = 'yyyy-MM-dd'}) {
