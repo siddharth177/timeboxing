@@ -1,16 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:timeboxing/providers/theme_provider.dart';
+import 'package:timeboxing/screens/NoDisturbLandingScreen.dart';
+
+import 'Utilities/theme.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerStatefulWidget {
   const MyApp({super.key});
 
   @override
+  ConsumerState<MyApp> createState() {
+    return _MyAppState();
+  }
+}
+
+class _MyAppState extends ConsumerState<MyApp> {
+  @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'Time Boxing',
+    final themeMode = ref.watch(themeModeProvider);
+    return MaterialApp(
+      theme: kLightThemeData,
+      darkTheme: kDarkThemeData,
+      themeMode: themeMode,
+      debugShowCheckedModeBanner: false,
+      title: 'Time Boxing App',
+      home: const Scaffold(
+        body: NoDisturbLandingScreen(),
+      ),
     );
   }
 }

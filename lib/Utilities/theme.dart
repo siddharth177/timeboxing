@@ -5,7 +5,9 @@ final Map<String, Color> kLightThemeColors = {
   'primaryColor': const Color(0xFFFFFFFF),
 };
 
-final Map<String, Color> kDarkThemeColors = {};
+final Map<String, Color> kDarkThemeColors = {
+  'primaryColor': const Color(0xFFFFFFFF),
+};
 
 var kDarkThemeData = ThemeData().copyWith(
   textTheme: GoogleFonts.urbanistTextTheme(),
