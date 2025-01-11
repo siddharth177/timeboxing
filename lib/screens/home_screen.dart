@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:timeboxing/widgets/custom_navigation_bar.dart';
+import 'package:timeboxing/widgets/timeline.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -28,6 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
+      body: const Timeline(),
       bottomNavigationBar: const CustomNavigationBar(),
     );
   }
