@@ -17,7 +17,7 @@ void displaySnackBar(BuildContext context, String message,
       duration: Duration(seconds: duration),
       behavior: SnackBarBehavior.floating,
       action: SnackBarAction(
-          label: 'Dismiss',
+          label: 'Dismiss', // TODO: customize
           disabledTextColor: Colors.white, //TODO: design
           onPressed: () {
             clearSnackbar(context);
