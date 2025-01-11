@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:timeboxing/providers/theme_provider.dart';
+import 'package:timeboxing/screens/home_screen.dart';
 import 'package:timeboxing/screens/no_disturb_landing_screen.dart';
 
 import 'Utilities/theme.dart';
@@ -29,7 +30,7 @@ class _MyAppState extends ConsumerState<MyApp> {
       debugShowCheckedModeBanner: false,
       title: 'Time Boxing App',
       home: const Scaffold(
-        body: NoDisturbLandingScreen(),
+        body: HomeScreen(),
       ),
     );
   }
