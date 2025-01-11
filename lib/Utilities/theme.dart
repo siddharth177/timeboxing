@@ -7,7 +7,9 @@ final Map<String, Color> kDarkThemeColors = {
   'lightGreenColor': const Color(0xFF9BB068),
   'lightOrangeColor': const Color(0xFFEF8833),
   'lightBrownColor': const Color(0xFF4F3422),
-  'lightPurpleColor': const Color(0xFFA687FF)
+  'lightPurpleColor': const Color(0xFFA687FF),
+  'lightPinkColor': const Color(0xFFFB7285),
+  'greyColor': const Color(0xFF756C65),
 };
 
 final Map<String, Color> kLightThemeColors = {
@@ -16,6 +18,8 @@ final Map<String, Color> kLightThemeColors = {
   'lightOrangeColor': kDarkThemeColors['lightOrangeColor']!,
   'lightBrownColor': kDarkThemeColors['lightBrownColor']!,
   'lightPurpleColor': kDarkThemeColors['lightPurpleColor']!,
+  'lightPinkColor': kDarkThemeColors['lightPinkColor']!,
+  'greyColor': kDarkThemeColors['greyColor']!,
 };
 
 var kDarkThemeData = ThemeData().copyWith(
