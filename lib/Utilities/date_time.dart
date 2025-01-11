@@ -25,7 +25,7 @@ monthNow() {
 }
 
 dayNow() {
-  return dateNow().day;
+  return dateNow().day.toString();
 }
 
 hourNow() {
