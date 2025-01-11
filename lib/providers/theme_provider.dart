@@ -9,7 +9,7 @@ class ThemeNotifier extends StateNotifier<ThemeMode> {
 
   Future<void> _loadTheme() async {
     final prefs = await SharedPreferences.getInstance();
-    final savedTheme = prefs.getString('theme_mode') ?? 'light';
+    final savedTheme = prefs.getString('theme_mode') ?? 'dark';
 
     switch (savedTheme) {
       case 'dark':
@@ -36,7 +36,7 @@ class ThemeNotifier extends StateNotifier<ThemeMode> {
         themeModeString = 'system';
         break;
       default:
-        themeModeString = 'light';
+        themeModeString = 'dark';
     }
 
     await prefs.setString('theme_mode', themeModeString);
