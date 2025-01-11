@@ -8,7 +8,7 @@ void clearAndDisplaySnackbar(BuildContext context, String message, {int duration
     SnackBar(
       content: Text(message),
       duration: Duration(seconds: duration),
-      backgroundColor: Colors.blue,
+      backgroundColor: Colors.blue, //TODO: change with alertType
     ),
   );
 }
