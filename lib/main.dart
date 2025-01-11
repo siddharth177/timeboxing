@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:timeboxing/providers/theme_provider.dart';
-import 'package:timeboxing/screens/NoDisturbLandingScreen.dart';
+import 'package:timeboxing/screens/no_disturb_landing_screen.dart';
 
 import 'Utilities/theme.dart';
 

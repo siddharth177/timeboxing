@@ -8,6 +8,7 @@ class CustomNavigationBar extends StatefulWidget {
 }
 
 class _CustomNavigationBarState extends State<CustomNavigationBar> {
+  int selectedIndex = 1; // default is middle icon (home)
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
@@ -25,9 +26,13 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
           label: 'Habit',
         ),
       ],
-      // currentIndex: widget.currentIndex,
+      currentIndex: selectedIndex,
       selectedItemColor: Colors.amber[800],
-      // onTap: widget.onTap,
+      onTap: (int index) {
+        setState(() {
+          selectedIndex = index;
+        });
+      },
     );
   }
 }
