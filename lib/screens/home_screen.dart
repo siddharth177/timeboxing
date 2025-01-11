@@ -1,0 +1,21 @@
+import 'package:flutter/material.dart';
+import 'package:timeboxing/widgets/custom_navigation_bar.dart';
+
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Scheduler"),
+      ),
+      bottomNavigationBar: const CustomNavigationBar(),
+    );
+  }
+}
