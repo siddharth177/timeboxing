@@ -46,6 +46,7 @@ dependencies:
   http: ^1.2.2
   shared_preferences: ^2.3.3
   hugeicons: ^0.0.7
+  google_nav_bar: ^5.0.7
 
 dev_dependencies:
   flutter_test:
