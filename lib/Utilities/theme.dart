@@ -2,20 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 final Map<String, Color> kLightThemeColors = {
-  'primaryColor' : const Color(0xFFFFFFFF),
+  'primaryColor': const Color(0xFFFFFFFF),
 };
 
-
-final Map<String, Color> kDarkThemeColors = {
-
-};
-
+final Map<String, Color> kDarkThemeColors = {};
 
 var kDarkThemeData = ThemeData().copyWith(
   textTheme: GoogleFonts.urbanistTextTheme(),
-  colorScheme: ColorScheme.fromSeed(seedColor: kLightThemeColors['primaryColor']!),
+  colorScheme:
+      ColorScheme.fromSeed(seedColor: kLightThemeColors['primaryColor']!),
 );
 
 var kLightThemeData = kDarkThemeData.copyWith(
-  colorScheme: ColorScheme.fromSeed(seedColor: kDarkThemeColors['primaryColor']!)),
+    colorScheme:
+        ColorScheme.fromSeed(seedColor: kDarkThemeColors['primaryColor']!)
 );
