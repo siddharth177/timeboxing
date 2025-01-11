@@ -13,7 +13,20 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Scheduler"),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.abc_sharp),
+            ),
+            const Text("Scheduler"),
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.menu),
+            ),
+          ],
+        ),
       ),
       bottomNavigationBar: const CustomNavigationBar(),
     );
