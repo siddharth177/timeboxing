@@ -17,31 +17,31 @@ DateTime dateNow() {
 }
 
 yearNow() {
-  dateNow().year;
+  return dateNow().year;
 }
 
 monthNow() {
-  dateNow().month;
+  return dateNow().month;
 }
 
 dayNow() {
-  dateNow().day;
+  return dateNow().day;
 }
 
 hourNow() {
-  dateNow().hour;
+  return dateNow().hour;
 }
 
 minuteNow() {
-  dateNow().minute;
+  return dateNow().minute;
 }
 
 secondNow() {
-  dateNow().second;
+  return dateNow().second;
 }
 
 weekNumberNow() {
-  dateNow().weekday;
+  return dateNow().weekday;
 }
 
 weekDayNow() {
@@ -49,7 +49,7 @@ weekDayNow() {
 }
 
 weekDayShortNow() {
-  return kWeekDaysShort[weekDayNow() - 1];
+  return kWeekDaysShort[weekNumberNow() - 1];
 }
 
 currentCompleteDate({String formatter = 'yyyy-MM-dd'}) {
