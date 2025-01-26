@@ -2,6 +2,6 @@ enum AlertType {
   success,
   info,
   action,
-  waring,
+  warn,
   error
 }
