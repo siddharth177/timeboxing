@@ -22,7 +22,7 @@ class _NoDisturbLandingScreen extends State<NoDisturbLandingScreen> {
           children: [
             Text(
               weekDayShortNow(),
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 48,
                 fontWeight: FontWeight.bold,
               ),
