@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../models/alert_type.dart';
-
+import '../enums/alert_type.dart';
 
 class CustomSnackbar {
   static void show({
@@ -15,22 +14,26 @@ class CustomSnackbar {
       AlertType.success: {
         "color": Colors.green,
         "icon": Icons.check_circle,
-        "textStyle": TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        "textStyle":
+            TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
       },
       AlertType.error: {
         "color": Colors.red,
         "icon": Icons.error,
-        "textStyle": TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        "textStyle":
+            TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
       },
       AlertType.warn: {
         "color": Colors.orange,
         "icon": Icons.warning,
-        "textStyle": TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        "textStyle":
+            TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
       },
       AlertType.info: {
         "color": Colors.blue,
         "icon": Icons.info,
-        "textStyle": TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        "textStyle":
+            TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
       },
     };
 

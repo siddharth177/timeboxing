@@ -1,4 +1,4 @@
-import 'package:timeboxing/models/task_status.dart';
+import 'package:timeboxing/enums/task_status.dart';
 import 'package:timeboxing/models/task_timebox_durations.dart';
 
 class Task {

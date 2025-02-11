@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../models/alert_type.dart';
+import '../enums/alert_type.dart';
 
 void clearAndDisplaySnackbar(BuildContext context, String message,
     {int duration = 4, AlertType alertType = AlertType.info}) {
