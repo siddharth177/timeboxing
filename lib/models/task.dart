@@ -16,4 +16,26 @@ class Task {
       required this.taskDescription,
       required this.taskStatus,
       required this.taskDurations});
+
+  factory Task.fromJson(Map<String, dynamic> json) {
+    return Task(
+      taskIndex: json['taskIndex'],
+      taskId: json['taskId'],
+      taskTitle: json['taskTitle'],
+      taskDescription: json['taskDescription'],
+      taskStatus: json['taskStatus'],
+      taskDurations: json['taskDurations'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'taskIndex': taskIndex,
+      'taskId': taskId,
+      'taskTitle': taskTitle,
+      'taskDescription': taskDescription,
+      'taskStatus': taskStatus,
+      'taskDurations': taskDurations,
+    };
+  }
 }
