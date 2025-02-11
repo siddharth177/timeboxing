@@ -14,4 +14,26 @@ class TaskTimeBoxDuration {
     required this.reminderTime,
     required this.reminderSnoozeDuration,
   });
+
+  factory TaskTimeBoxDuration.fromJson(Map<String, dynamic> json) {
+    return TaskTimeBoxDuration(
+      startTime: json['startTime'],
+      endTime: json['endTime'],
+      duration: json['duration'],
+      remind: json['remind'],
+      reminderTime: json['reminderTime'],
+      reminderSnoozeDuration: json['reminderSnoozeDuration'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'startTime': startTime,
+      'endTime': endTime,
+      'duration': duration,
+      'remind': remind,
+      'reminderTime': reminderTime,
+      'reminderSnoozeDuration': reminderSnoozeDuration,
+    };
+  }
 }
