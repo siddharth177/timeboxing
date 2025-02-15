@@ -23,23 +23,25 @@ class Timeline extends StatelessWidget {
     return SizedBox(
       height: gapHeight, // keep it variable to change the gap between
       child: TimelineTile(
-        isFirst: isFirst,
-        isLast: isLast,
-        beforeLineStyle: const LineStyle(color: Colors.black, thickness: 4),
-        indicatorStyle: IndicatorStyle(
-          width: 40,
-          color: Colors.blueAccent,
-          iconStyle: IconStyle(
-            iconData: Icons.dangerous_outlined,
-            color: Colors.white,
+          isFirst: isFirst,
+          isLast: isLast,
+          beforeLineStyle: const LineStyle(color: Colors.black, thickness: 4),
+          indicatorStyle: IndicatorStyle(
+            width: 40,
+            color: Colors.blueAccent,
+            iconStyle: IconStyle(
+              iconData: Icons.dangerous_outlined,
+              color: Colors.white,
+            ),
           ),
-        ),
-        afterLineStyle: const LineStyle(
-          color: Colors.red,
-          thickness: 4,
-        ),
-        endChild: EventCard(tasks: tasks),
-      ),
+          afterLineStyle: const LineStyle(
+            color: Colors.red,
+            thickness: 4,
+          ),
+          endChild: Transform.translate(
+            offset: Offset(0, gapHeight / 2),
+            child: EventCard(tasks: tasks),
+          )),
     );
   }
 }
