@@ -1,28 +1,83 @@
+import 'dart:async';
 import 'dart:ui';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rive/rive.dart';
+import 'package:timeboxing/screens/no_disturb_landing_screen.dart';
 
+import '../../Utilities/snackbar_alert.dart';
 import '../../providers/auth_provider.dart';
-import '../../widgets/authentication/forgot_password.dart';
-import '../../widgets/authentication/login_signup.dart';
-
-class AuthScreen extends ConsumerStatefulWidget {
-  const AuthScreen({super.key});
+class EmailVerificationScreen extends ConsumerStatefulWidget {
+  const EmailVerificationScreen({super.key});
 
   @override
-  ConsumerState<AuthScreen> createState() {
-    return _AuthScreenState();
+  ConsumerState<EmailVerificationScreen> createState() {
+    return _EmailVerificationScreenState();
   }
 }
 
-class _AuthScreenState extends ConsumerState<AuthScreen> {
+class _EmailVerificationScreenState
+    extends ConsumerState<EmailVerificationScreen> {
+  bool isEmailVerified = false;
+  bool canResentEmail = false;
+  Timer? timer;
+
+  @override
+  void initState() {
+    super.initState();
+    isEmailVerified = firebaseAuthInstance.currentUser!.emailVerified;
+
+    if (!isEmailVerified) {
+      sendVerificationEmail();
+
+      timer = Timer.periodic(
+          const Duration(seconds: 1), (_) => checkEmailVerificationStatus());
+    }
+  }
+
+  @override
+  void dispose() {
+    timer?.cancel();
+    super.dispose();
+  }
+
+  Future sendVerificationEmail() async {
+    try {
+      final user = firebaseAuthInstance.currentUser!;
+      await user.sendEmailVerification();
+
+      clearAndDisplaySnackbar(context, 'Verification Mail Sent');
+
+      setState(() {
+        canResentEmail = false;
+      });
+      await Future.delayed(const Duration(seconds: 10));
+      setState(() {
+        canResentEmail = true;
+      });
+    } on FirebaseAuthException catch (error) {
+      clearAndDisplaySnackbar(
+          context, error.message ?? 'Authentication Failed');
+    }
+  }
+
+  Future checkEmailVerificationStatus() async {
+    await FirebaseAuth.instance.currentUser!.reload();
+    setState(() {
+      isEmailVerified = firebaseAuthInstance.currentUser!.emailVerified;
+    });
+
+    isEmailVerified ? timer?.cancel() : null;
+  }
+
   @override
   Widget build(BuildContext context) {
-    final isLogin = ref.watch(isLoginProvider);
-    final isForgotPassword = ref.watch(isForgotPasswordProvider);
+    if (isEmailVerified) {
+      return const NoDisturbLandingScreen();
+    }
 
     return Scaffold(
       body: Stack(
@@ -32,8 +87,7 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
                 ? const Color.fromARGB(200, 123, 123, 123)
                 : Colors.transparent,
           ),
-          const RiveAnimation.asset(
-              'assets/animations/rive/sphere_animation.riv'),
+          const RiveAnimation.asset('assets/animations/rive/spin.riv'),
           Positioned.fill(
               child: BackdropFilter(
                 filter: ImageFilter.blur(sigmaX: 20, sigmaY: 10),
@@ -59,19 +113,14 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(30.0, 20, 20, 30),
+                    padding: const EdgeInsets.all(20.0),
                     child: Text(
-                      isForgotPassword
-                          ? 'We got You!'
-                          : isLogin
-                          ? 'Login to get Started'
-                          : 'Sign up to Proceed',
+                      'Just One more step...',
                       style: TextStyle(
                         fontSize: 20,
                         height: 1.2,
                         fontFamily: GoogleFonts.openSans().fontFamily,
                         fontWeight: FontWeight.w300,
-                        color: Colors.black,
                       ),
                     ),
                   ),
@@ -81,26 +130,46 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
                       children: [
                         Card(
                           elevation: 40,
-                          color: Theme.of(context).brightness == Brightness.dark
-                              ? Colors.white10.withOpacity(0.40)
-                              : Colors.white.withOpacity(0.65),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12.0),
-                            side: BorderSide(
-                              color: Theme.of(context).brightness ==
-                                  Brightness.dark
-                                  ? Colors.white10
-                                  : Colors.transparent,
-                            ),
-                          ),
+                          color: Colors.white.withOpacity(0.65),
                           margin: const EdgeInsets.all(20),
                           child: SingleChildScrollView(
                             child: Padding(
-                              padding:
-                              const EdgeInsets.fromLTRB(16, 16, 16, 10),
-                              child: isForgotPassword
-                                  ? const ForgotPasswordWidget()
-                                  : const LoginSignUpWidget(),
+                              padding: const EdgeInsets.all(16),
+                              child: Form(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    const Center(
+                                      child: Text(
+                                          'A verification email has been sent out to your registered email id.'),
+                                    ),
+                                    //cancel button
+                                    ElevatedButton(
+                                        onPressed: () {
+                                          firebaseAuthInstance.signOut();
+                                        },
+                                        child: const Text('Signout')),
+                                    ElevatedButton(
+                                        onPressed: () {
+                                          if (canResentEmail) {
+                                            sendVerificationEmail();
+                                          } else {
+                                            ScaffoldMessenger.of(context)
+                                                .clearSnackBars();
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(
+                                              const SnackBar(
+                                                content: Text(
+                                                    'Verification Email has already been sent'),
+                                              ),
+                                            );
+                                          }
+                                        },
+                                        child: const Text('Resend')),
+                                  ],
+                                ),
+                              ),
                             ),
                           ),
                         ),
