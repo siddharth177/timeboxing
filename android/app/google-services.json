@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "82112618151",
+    "project_id": "timeboxing-67803",
+    "storage_bucket": "timeboxing-67803.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:82112618151:android:68d309e5c209e587928582",
+        "android_client_info": {
+          "package_name": "com.example.timeboxing"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBRBuNC1GJXz-jkB_gJRWvKz52wZ_dHYQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
