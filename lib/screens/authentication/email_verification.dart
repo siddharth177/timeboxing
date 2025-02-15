@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rive/rive.dart';
+import 'package:timeboxing/screens/habits_screen.dart';
 import 'package:timeboxing/screens/no_disturb_landing_screen.dart';
 
 import '../../Utilities/snackbar_alert.dart';
@@ -76,7 +77,7 @@ class _EmailVerificationScreenState
   @override
   Widget build(BuildContext context) {
     if (isEmailVerified) {
-      return const NoDisturbLandingScreen();
+      return const HabitsScreen();
     }
 
     return Scaffold(

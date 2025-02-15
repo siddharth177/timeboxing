@@ -49,7 +49,7 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
                   Padding(
                     padding: const EdgeInsets.all(20.0),
                     child: Text(
-                      'Welcome,\nto Your Vocab List',
+                      'Welcome,\nto Time boxing',
                       style: TextStyle(
                         fontSize: 55,
                         fontFamily: GoogleFonts.poppins().fontFamily,
