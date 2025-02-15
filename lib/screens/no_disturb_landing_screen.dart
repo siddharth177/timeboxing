@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:timeboxing/Utilities/date_time.dart';
+import 'package:timeboxing/widgets/custom_navigation_bar.dart';
 
 class NoDisturbLandingScreen extends StatefulWidget {
   const NoDisturbLandingScreen({super.key});
@@ -29,9 +30,7 @@ class _NoDisturbLandingScreen extends State<NoDisturbLandingScreen> {
             ),
             Text(
               dayNow(),
-              style: TextStyle(
-                  fontSize: 80,
-                  fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 80, fontWeight: FontWeight.bold),
             ),
             const SizedBox(
               height: 40,
@@ -65,6 +64,7 @@ class _NoDisturbLandingScreen extends State<NoDisturbLandingScreen> {
           ],
         ),
       ),
+      bottomNavigationBar: const CustomNavigationBar(),
     );
   }
 }

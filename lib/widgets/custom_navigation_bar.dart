@@ -9,27 +9,9 @@ class CustomNavigationBar extends StatefulWidget {
 }
 
 class _CustomNavigationBarState extends State<CustomNavigationBar> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 1;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.w600);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Home',
-      style: optionStyle,
-    ),
-    Text(
-      'Likes',
-      style: optionStyle,
-    ),
-    Text(
-      'Search',
-      style: optionStyle,
-    ),
-    Text(
-      'Profile',
-      style: optionStyle,
-    ),
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -55,18 +37,18 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
           duration: Duration(milliseconds: 400),
           tabBackgroundColor: Colors.grey[100]!,
           color: Colors.black,
-          tabs: [
+          tabs: const [
             GButton(
-              icon: Icons.price_change_outlined,
-              text: 'Home',
+              icon: Icons.send_time_extension,
+              text: 'Coming soon',
             ),
             GButton(
               icon: Icons.home,
-              text: 'Likes',
+              text: 'Home',
             ),
             GButton(
-              icon: Icons.health_and_safety_outlined,
-              text: 'Search',
+              icon: Icons.workspaces,
+              text: 'Settings',
             ),
           ],
           selectedIndex: _selectedIndex,

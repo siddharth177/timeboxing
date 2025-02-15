@@ -29,13 +29,27 @@ class _TimelineScreenState extends State<TimelineScreen> {
         ));
       }
       timeLines.add(
-        Timeline(
-          isFirst: i == 0,
-          isLast: i == events.length - 1,
-          isPast: i < 2,
-          gapHeightCurrent: i == 0 ? 100 : i * 100,
-          gapHeightNext: (i + 1) * 100,
-          tasks: [...taskList],
+        Row(
+          children: [
+            Expanded(
+              flex: 0,
+              child: SizedBox(
+                width: 30,
+                // padding: const EdgeInsets.all(10),
+                child: Text("$i"),
+              ),
+            ),
+            Expanded(
+              child: Timeline(
+                isFirst: i == 0,
+                isLast: i == events.length - 1,
+                isPast: i < 2,
+                gapHeightCurrent: i == 0 ? 100 : i * 100,
+                gapHeightNext: (i + 1) * 100,
+                tasks: [...taskList],
+              ),
+            ),
+          ],
         ),
       );
     }
