@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:timeboxing/widgets/custom_navigation_bar.dart';
 import 'package:timeboxing/widgets/timeline.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class TimelineScreen extends StatefulWidget {
+  const TimelineScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<TimelineScreen> createState() => _TimelineScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _TimelineScreenState extends State<TimelineScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +29,16 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      body: const Timeline(),
+      body: ListView(
+        padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+        children: const [
+          // more task above --> more height
+          Timeline(isFirst: true, isLast: false, isPast: true, gapHeight: 50),
+          Timeline(isFirst: false, isLast: false, isPast: true, gapHeight: 50),
+          Timeline(isFirst: false, isLast: false, isPast: true, gapHeight: 200),
+          Timeline(isFirst: false, isLast: true, isPast: false, gapHeight: 400),
+        ],
+      ),
       bottomNavigationBar: const CustomNavigationBar(),
     );
   }
