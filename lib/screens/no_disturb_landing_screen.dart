@@ -57,7 +57,7 @@ class _NoDisturbLandingScreenState extends State<NoDisturbLandingScreen> {
   @override
   Widget build(BuildContext context) {
     String taskStart = "4 PM";
-    String taskEnd = "8 PM";
+    String taskEnd = "10 PM";
     double progress = _calculateProgress(taskStart, taskEnd);
 
     return Scaffold(
@@ -81,51 +81,37 @@ class _NoDisturbLandingScreenState extends State<NoDisturbLandingScreen> {
             // Timeline + Task Event
             Row(
               children: [
+                Text(
+                  currentTime, // Real-time updating clock
+                  style: TextStyle(color: Colors.white, fontSize: 16),
+                ),
                 // Vertical Dashed Line + Current Time
                 Column(
                   children: [
+                    getVerticalLine(25),
+                    getVerticalLine(25),
+                    getVerticalLine(25),
+                    getVerticalLine(25),
+                    getVerticalLine(25),
+
+                    getVerticalLine(75, endpoint: 0),
                     Container(
-                      height: 50,
-                      child: VerticalDivider(
-                        color: Colors.white54,
-                        thickness: 2,
-                        width: 20,
-                        indent: 0,
-                        endIndent: 10,
+                      width: 12,
+                      height: 12,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.white,
                       ),
                     ),
-                    // Sphere (Current Time Indicator)
-                    Row(
-                      children: [
-                        Text(
-                          currentTime, // Real-time updating clock
-                          style: TextStyle(color: Colors.white, fontSize: 16),
-                        ),
-                        SizedBox(width: 5),
-                        Container(
-                          width: 12,
-                          height: 12,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Container(
-                      height: 50,
-                      child: VerticalDivider(
-                        color: Colors.white54,
-                        thickness: 2,
-                        width: 20,
-                        indent: 10,
-                        endIndent: 0,
-                      ),
-                    ),
+                    getVerticalLine(75, endpoint: 0),
+
+                    getVerticalLine(25),
+                    getVerticalLine(25),
+                    getVerticalLine(25),
+                    getVerticalLine(25),
+                    getVerticalLine(25),
                   ],
                 ),
-                SizedBox(width: 16),
-
                 // Event Card Widget
                 Expanded(
                   child: Container(
@@ -206,4 +192,19 @@ class _NoDisturbLandingScreenState extends State<NoDisturbLandingScreen> {
       bottomNavigationBar: CustomNavigationBar(),
     );
   }
+
+  getVerticalLine(double height, {double endpoint = 10}) {
+    return Container(
+      height: height,
+      child: VerticalDivider(
+        color: Colors.white54,
+        thickness: 2,
+        width: 20,
+        indent: 0,
+        endIndent: endpoint,
+      ),
+    );
+  }
 }
+
+
