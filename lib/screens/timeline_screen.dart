@@ -1,17 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:timeboxing/enums/task_status.dart';
+import 'package:timeboxing/models/task.dart';
 import 'package:timeboxing/widgets/custom_navigation_bar.dart';
 import 'package:timeboxing/widgets/timeline.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class TimelineScreen extends StatefulWidget {
+  const TimelineScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<TimelineScreen> createState() => _TimelineScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _TimelineScreenState extends State<TimelineScreen> {
   @override
   Widget build(BuildContext context) {
+    var events = [1, 2, 3, 4, 5];
+    var timeLines = [];
+    for (int i = 0; i < 5; i++) {
+      var taskList = [];
+      for (int j = 0; j < events[i]; j++) {
+        taskList.add(Task(
+          taskIndex: i.toString(),
+          taskId: i.toString(),
+          taskTitle: "Title $i",
+          taskDescription: "Description of task $i",
+          taskStatus: TaskStatus.inProgress,
+          taskDurations: [],
+        ));
+      }
+      timeLines.add(
+        Timeline(
+          isFirst: i == 0,
+          isLast: i == events.length - 1,
+          isPast: i < 2,
+          gapHeight: i == 0 ? 100 : i * 100,
+          tasks: [...taskList],
+        ),
+      );
+    }
     return Scaffold(
       appBar: AppBar(
         title: Row(
@@ -29,7 +55,10 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      body: const Timeline(),
+      body: ListView(
+        padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+        children: [...timeLines],
+      ),
       bottomNavigationBar: const CustomNavigationBar(),
     );
   }

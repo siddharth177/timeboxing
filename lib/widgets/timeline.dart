@@ -1,40 +1,47 @@
 import 'package:flutter/material.dart';
+import 'package:timeboxing/models/task.dart';
+import 'package:timeboxing/widgets/event_card.dart';
+import 'package:timeline_tile/timeline_tile.dart';
 
-class Timeline extends StatefulWidget {
-  const Timeline({super.key});
-
-  @override
-  State<Timeline> createState() => _TimelineState();
-}
-
-class _TimelineState extends State<Timeline> {
-  int N = 10;
-  int M = 4;
+class Timeline extends StatelessWidget {
+  final bool isFirst;
+  final bool isLast;
+  final bool isPast;
+  final double gapHeight;
+  final List<Task> tasks;
+  const Timeline({
+    super.key,
+    required this.isFirst,
+    required this.isLast,
+    required this.isPast,
+    required this.gapHeight,
+    required this.tasks,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Date grid"),
-      ),
-      body: GridView.builder(
-        gridDelegate:
-            SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: M),
-        itemCount: N * M,
-        itemBuilder: (BuildContext context, int index) {
-          final int i = index ~/ M; // Row index
-          final int j = index % M; // Column index
-
-          return Container(
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey),
+    return SizedBox(
+      height: gapHeight, // keep it variable to change the gap between
+      child: TimelineTile(
+          isFirst: isFirst,
+          isLast: isLast,
+          beforeLineStyle: const LineStyle(color: Colors.black, thickness: 4),
+          indicatorStyle: IndicatorStyle(
+            width: 40,
+            color: Colors.blueAccent,
+            iconStyle: IconStyle(
+              iconData: Icons.dangerous_outlined,
+              color: Colors.white,
             ),
-            child: Center(
-              child: Text('Cell [$i][$j]'),
-            ),
-          );
-        },
-      ),
+          ),
+          afterLineStyle: const LineStyle(
+            color: Colors.red,
+            thickness: 4,
+          ),
+          endChild: Transform.translate(
+            offset: Offset(0, gapHeight / 2),
+            child: EventCard(tasks: tasks),
+          )),
     );
   }
 }
