@@ -47,6 +47,7 @@ dependencies:
   shared_preferences: ^2.3.3
   hugeicons: ^0.0.7
   google_nav_bar: ^5.0.7
+  timeline_tile: ^2.0.0
 
 dev_dependencies:
   flutter_test:
