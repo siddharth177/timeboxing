@@ -33,7 +33,8 @@ class _TimelineScreenState extends State<TimelineScreen> {
           isFirst: i == 0,
           isLast: i == events.length - 1,
           isPast: i < 2,
-          gapHeight: i == 0 ? 100 : i * 100,
+          gapHeightCurrent: i == 0 ? 100 : i * 100,
+          gapHeightNext: (i + 1) * 100,
           tasks: [...taskList],
         ),
       );
