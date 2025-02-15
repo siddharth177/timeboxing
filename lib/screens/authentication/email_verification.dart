@@ -77,7 +77,7 @@ class _EmailVerificationScreenState
   @override
   Widget build(BuildContext context) {
     if (isEmailVerified) {
-      return const HabitsScreen();
+      return NoDisturbLandingScreen();
     }
 
     return Scaffold(
