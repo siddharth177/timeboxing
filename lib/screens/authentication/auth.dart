@@ -64,8 +64,8 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
                       isForgotPassword
                           ? 'We got You!'
                           : isLogin
-                          ? 'Login to get Started'
-                          : 'Sign up to Proceed',
+                          ? 'Login to Proceed'
+                          : 'Sign up to get Started',
                       style: TextStyle(
                         fontSize: 20,
                         height: 1.2,
