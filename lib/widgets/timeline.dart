@@ -7,25 +7,27 @@ class Timeline extends StatelessWidget {
   final bool isFirst;
   final bool isLast;
   final bool isPast;
-  final double gapHeight;
+  final double gapHeightCurrent;
+  final double gapHeightNext;
   final List<Task> tasks;
   const Timeline({
     super.key,
     required this.isFirst,
     required this.isLast,
     required this.isPast,
-    required this.gapHeight,
+    required this.gapHeightCurrent,
     required this.tasks,
+    required this.gapHeightNext,
   });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: gapHeight, // keep it variable to change the gap between
+      height: gapHeightCurrent, // keep it variable to change the gap between
       child: TimelineTile(
           isFirst: isFirst,
           isLast: isLast,
-          beforeLineStyle: const LineStyle(color: Colors.black, thickness: 4),
+          beforeLineStyle: const LineStyle(color: Colors.black),
           indicatorStyle: IndicatorStyle(
             width: 40,
             color: Colors.blueAccent,
@@ -34,14 +36,16 @@ class Timeline extends StatelessWidget {
               color: Colors.white,
             ),
           ),
-          afterLineStyle: const LineStyle(
-            color: Colors.red,
-            thickness: 4,
-          ),
-          endChild: Transform.translate(
-            offset: Offset(0, gapHeight / 2),
-            child: EventCard(tasks: tasks),
-          )),
+          afterLineStyle: const LineStyle(color: Colors.red),
+          endChild: isLast
+              ? null
+              : Transform.translate(
+                  offset: Offset(0, (gapHeightNext + gapHeightCurrent) / 4),
+                  child: EventCard(
+                    tasks: tasks,
+                    height: gapHeightNext,
+                  ),
+                )),
     );
   }
 }

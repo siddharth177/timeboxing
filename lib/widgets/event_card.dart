@@ -3,7 +3,8 @@ import 'package:timeboxing/models/task.dart';
 
 class EventCard extends StatefulWidget {
   final List<Task> tasks;
-  const EventCard({super.key, required this.tasks});
+  final double height;
+  const EventCard({super.key, required this.tasks, required this.height});
 
   @override
   State<EventCard> createState() => _EventCardState();
@@ -13,8 +14,9 @@ class _EventCardState extends State<EventCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
+        height: widget.height,
         margin: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-        padding: const EdgeInsets.all(30),
+        padding: const EdgeInsets.all(20),
         decoration: const BoxDecoration(
           color: Colors.deepPurpleAccent,
           // separate radius needed to merge continuous events spreading across different timeslots
@@ -26,7 +28,7 @@ class _EventCardState extends State<EventCard> {
           ),
         ),
         child: Text(
-          widget.tasks[0].taskTitle,
+          "${widget.tasks[0].taskTitle}\nheight: ${widget.height}",
           style: const TextStyle(color: Colors.white),
         ));
   }
