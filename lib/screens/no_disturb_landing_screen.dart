@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:intl/intl.dart';
+import 'package:timeboxing/widgets/custom_navigation_bar.dart';
 
 class NoDisturbLandingScreen extends StatefulWidget {
   const NoDisturbLandingScreen({super.key});
@@ -202,6 +203,7 @@ class _NoDisturbLandingScreenState extends State<NoDisturbLandingScreen> {
           ],
         ),
       ),
+      bottomNavigationBar: CustomNavigationBar(),
     );
   }
 }
