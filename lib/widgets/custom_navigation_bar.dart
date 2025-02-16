@@ -1,64 +1,72 @@
 import 'package:flutter/material.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
 
-class CustomNavigationBar extends StatefulWidget {
-  const CustomNavigationBar({super.key});
+class CustomNavigationBar extends StatelessWidget {
+  final int selectedIndex;
+  final ValueChanged<int> onItemPressed;
+  final VoidCallback onFabPressed;
+  const CustomNavigationBar({
+    super.key,
+    required this.selectedIndex,
+    required this.onItemPressed,
+    required this.onFabPressed,
+  });
+  const CustomNavigationBar.emptyConstructor({super.key})
+      : selectedIndex = 0,
+        onItemPressed = _dummyOnItemPressed,
+        onFabPressed = _dummyOnFabPressed;
 
-  @override
-  State<CustomNavigationBar> createState() => _CustomNavigationBarState();
-}
-
-class _CustomNavigationBarState extends State<CustomNavigationBar> {
-  int _selectedIndex = 1;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.w600);
+  static void _dummyOnItemPressed(int index) {}
+  static void _dummyOnFabPressed() {}
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            blurRadius: 20,
-            color: Colors.black.withOpacity(.1),
-          )
+    return BottomAppBar(
+      color: Colors.deepPurpleAccent,
+      shape: const CircularNotchedRectangle(), // Creates a notch for the FAB
+
+      notchMargin: 6.0, // The gap between the FAB and the bottom bar
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          IconButton(
+            icon: const Icon(Icons.send_time_extension),
+            onPressed: () {
+              onItemPressed(0);
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.home),
+            onPressed: () {
+              onItemPressed(1);
+            },
+          ),
+          const SizedBox(width: 48.0),
+          IconButton(
+            icon: const Icon(Icons.workspaces),
+            onPressed: () {
+              onItemPressed(2);
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.settings),
+            onPressed: () {
+              onItemPressed(3);
+            },
+          ),
         ],
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8),
-        child: GNav(
-          rippleColor: Colors.grey[300]!,
-          hoverColor: Colors.grey[100]!,
-          gap: 8,
-          activeColor: Colors.black,
-          iconSize: 24,
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-          duration: Duration(milliseconds: 400),
-          tabBackgroundColor: Colors.grey[100]!,
-          color: Colors.black,
-          tabs: const [
-            GButton(
-              icon: Icons.send_time_extension,
-              text: 'Coming soon',
-            ),
-            GButton(
-              icon: Icons.home,
-              text: 'Home',
-            ),
-            GButton(
-              icon: Icons.workspaces,
-              text: 'Settings',
-            ),
-          ],
-          selectedIndex: _selectedIndex,
-          onTabChange: (index) {
-            setState(() {
-              _selectedIndex = index;
-            });
-          },
-        ),
       ),
     );
   }
+
+  Widget buildFab() {
+    return FloatingActionButton(
+      onPressed: () => onFabPressed(),
+      child: const Icon(Icons.add),
+      backgroundColor: Colors.pink,
+      shape: const CircleBorder(),
+    );
+  }
+
+  FloatingActionButtonLocation get fabLocation =>
+      FloatingActionButtonLocation.miniCenterDocked;
 }
