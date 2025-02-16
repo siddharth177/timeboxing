@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
 import 'dart:async';
+
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:timeboxing/widgets/custom_navigation_bar.dart';
 
@@ -78,7 +79,7 @@ class _NoDisturbLandingScreenState extends State<NoDisturbLandingScreen> {
                 style: TextStyle(fontSize: 28, color: Colors.white),
               ),
               const SizedBox(height: 50),
-      
+
               // Timeline + Task Event
               Row(
                 children: [
@@ -94,7 +95,6 @@ class _NoDisturbLandingScreenState extends State<NoDisturbLandingScreen> {
                       getVerticalLine(25),
                       getVerticalLine(25),
                       getVerticalLine(25),
-      
                       getVerticalLine(75, endpoint: 0),
                       Container(
                         width: 12,
@@ -105,7 +105,6 @@ class _NoDisturbLandingScreenState extends State<NoDisturbLandingScreen> {
                         ),
                       ),
                       getVerticalLine(75, endpoint: 0),
-      
                       getVerticalLine(25),
                       getVerticalLine(25),
                       getVerticalLine(25),
@@ -133,18 +132,20 @@ class _NoDisturbLandingScreenState extends State<NoDisturbLandingScreen> {
                           ),
                           Text(
                             "Task Description",
-                            style: TextStyle(color: Colors.white70, fontSize: 14),
+                            style:
+                                TextStyle(color: Colors.white70, fontSize: 14),
                           ),
                           SizedBox(height: 5),
-      
+
                           // Task Schedule Time
                           Text(
                             "$taskStart > $taskEnd",
-                            style: TextStyle(fontSize: 14, color: Colors.white70),
+                            style:
+                                TextStyle(fontSize: 14, color: Colors.white70),
                           ),
-      
+
                           SizedBox(height: 8),
-      
+
                           // Progress Bar + Dropdown Button
                           Row(
                             children: [
@@ -158,10 +159,11 @@ class _NoDisturbLandingScreenState extends State<NoDisturbLandingScreen> {
                                 ),
                               ),
                               SizedBox(width: 10),
-      
+
                               // Dropdown Button for Task Status
                               PopupMenuButton<String>(
-                                icon: Icon(Icons.more_vert, color: Colors.white),
+                                icon:
+                                    Icon(Icons.more_vert, color: Colors.white),
                                 onSelected: (String value) {
                                   setState(() {
                                     taskStatus = value;
@@ -190,13 +192,13 @@ class _NoDisturbLandingScreenState extends State<NoDisturbLandingScreen> {
             ],
           ),
         ),
-        bottomNavigationBar: CustomNavigationBar(),
+        bottomNavigationBar: CustomNavigationBar.emptyConstructor(),
       ),
     );
   }
 
   getVerticalLine(double height, {double endpoint = 10}) {
-    return Container(
+    return SizedBox(
       height: height,
       child: VerticalDivider(
         color: Colors.white54,
@@ -208,5 +210,3 @@ class _NoDisturbLandingScreenState extends State<NoDisturbLandingScreen> {
     );
   }
 }
-
-

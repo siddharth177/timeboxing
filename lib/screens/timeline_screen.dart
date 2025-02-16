@@ -11,9 +11,27 @@ class TimelineScreen extends StatefulWidget {
 
 class _TimelineScreenState extends State<TimelineScreen> {
   final TimelineService timelineService = TimelineService();
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  void _onFabPressed() {
+    // Handle FAB press here
+    print('FAB Pressed!');
+  }
+
   @override
   Widget build(BuildContext context) {
     var timelines = timelineService.generateTimelineTasks();
+    var bottomNavigationBar = CustomNavigationBar(
+      selectedIndex: _selectedIndex,
+      onItemPressed: _onItemTapped,
+      onFabPressed: _onFabPressed,
+    );
     return Scaffold(
       appBar: AppBar(
         title: Row(
@@ -33,9 +51,11 @@ class _TimelineScreenState extends State<TimelineScreen> {
       ),
       body: ListView(
         padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
-        children: [...timelines],
+        children: timelines,
       ),
-      bottomNavigationBar: const CustomNavigationBar(),
+      bottomNavigationBar: bottomNavigationBar,
+      floatingActionButton: bottomNavigationBar.buildFab(),
+      floatingActionButtonLocation: bottomNavigationBar.fabLocation,
     );
   }
 }

@@ -18,7 +18,7 @@ class _EventCardState extends State<EventCard> {
         margin: const EdgeInsets.fromLTRB(20, 0, 20, 0),
         padding: const EdgeInsets.all(20),
         decoration: const BoxDecoration(
-          color: Colors.deepPurpleAccent,
+          color: Colors.black,
           // separate radius needed to merge continuous events spreading across different timeslots
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(8),
