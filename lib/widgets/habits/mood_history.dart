@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class MoodHistoryWidget extends StatefulWidget {
   @override
   _MoodHistoryWidgetState createState() => _MoodHistoryWidgetState();

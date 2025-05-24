@@ -30,12 +30,12 @@ class _LoginSignUpWidgetState extends ConsumerState<LoginSignUpWidget> {
     try {
       if (_isLogin) {
         final userCredentials =
-        await firebaseAuthInstance.signInWithEmailAndPassword(
-            email: _enteredEmail, password: _enteredPassword);
+            await firebaseAuthInstance.signInWithEmailAndPassword(
+                email: _enteredEmail, password: _enteredPassword);
       } else {
         final userCredentials =
-        await firebaseAuthInstance.createUserWithEmailAndPassword(
-            email: _enteredEmail, password: _enteredPassword);
+            await firebaseAuthInstance.createUserWithEmailAndPassword(
+                email: _enteredEmail, password: _enteredPassword);
       }
     } on FirebaseAuthException catch (error) {
       clearAndDisplaySnackbar(
@@ -96,16 +96,16 @@ class _LoginSignUpWidgetState extends ConsumerState<LoginSignUpWidget> {
           ),
           _isLogin
               ? ElevatedButton(
-            onPressed: () {
-              ref
-                  .read(isForgotPasswordProvider.notifier)
-                  .updateForgotPasswordProvider(true);
-            },
-            child: const Text('Forgot Password?'),
-          )
+                  onPressed: () {
+                    ref
+                        .read(isForgotPasswordProvider.notifier)
+                        .updateForgotPasswordProvider(true);
+                  },
+                  child: const Text('Forgot Password?'),
+                )
               : const SizedBox(
-            height: 0,
-          ),
+                  height: 0,
+                ),
           const SizedBox(height: 8),
           ElevatedButton(
             onPressed: _submit,

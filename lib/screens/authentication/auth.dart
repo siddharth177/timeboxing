@@ -36,9 +36,9 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
               'assets/animations/rive/sphere_animation.riv'),
           Positioned.fill(
               child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 20, sigmaY: 10),
-                child: const SizedBox(),
-              )),
+            filter: ImageFilter.blur(sigmaX: 20, sigmaY: 10),
+            child: const SizedBox(),
+          )),
           SafeArea(
             child: SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
@@ -64,8 +64,8 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
                       isForgotPassword
                           ? 'We got You!'
                           : isLogin
-                          ? 'Login to Proceed'
-                          : 'Sign up to get Started',
+                              ? 'Login to Proceed'
+                              : 'Sign up to get Started',
                       style: TextStyle(
                         fontSize: 20,
                         height: 1.2,
@@ -88,7 +88,7 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
                             borderRadius: BorderRadius.circular(12.0),
                             side: BorderSide(
                               color: Theme.of(context).brightness ==
-                                  Brightness.dark
+                                      Brightness.dark
                                   ? Colors.white10
                                   : Colors.transparent,
                             ),
@@ -97,7 +97,7 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
                           child: SingleChildScrollView(
                             child: Padding(
                               padding:
-                              const EdgeInsets.fromLTRB(16, 16, 16, 10),
+                                  const EdgeInsets.fromLTRB(16, 16, 16, 10),
                               child: isForgotPassword
                                   ? const ForgotPasswordWidget()
                                   : const LoginSignUpWidget(),

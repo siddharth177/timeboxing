@@ -19,8 +19,7 @@ class _PositionedLoadingWidget extends State<PositionedLoadingWidget> {
       bottom: 0,
       left: 0,
       child: RiveAnimation.asset(
-          speedMultiplier: 3,
-          'assets/animations/rive/dot_loading.riv'),
+          speedMultiplier: 3, 'assets/animations/rive/dot_loading.riv'),
     );
   }
 }

@@ -11,6 +11,7 @@ import 'package:timeboxing/screens/no_disturb_landing_screen.dart';
 
 import '../../Utilities/snackbar_alert.dart';
 import '../../providers/auth_provider.dart';
+
 class EmailVerificationScreen extends ConsumerStatefulWidget {
   const EmailVerificationScreen({super.key});
 
@@ -91,9 +92,9 @@ class _EmailVerificationScreenState
           const RiveAnimation.asset('assets/animations/rive/spin.riv'),
           Positioned.fill(
               child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 20, sigmaY: 10),
-                child: const SizedBox(),
-              )),
+            filter: ImageFilter.blur(sigmaX: 20, sigmaY: 10),
+            child: const SizedBox(),
+          )),
           SafeArea(
             child: SingleChildScrollView(
               physics: const BouncingScrollPhysics(),

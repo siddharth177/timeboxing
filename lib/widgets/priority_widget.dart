@@ -14,6 +14,4 @@ class _PriorityWidget extends State<PriorityWidget> {
   Widget build(BuildContext context) {
     throw UnimplementedError();
   }
-
-
 }

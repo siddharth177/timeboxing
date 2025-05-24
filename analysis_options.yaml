@@ -9,6 +9,20 @@
 # packages, and plugins designed to encourage good coding practices.
 include: package:flutter_lints/flutter.yaml
 
+analyzer:
+  errors:
+    unused_import: warning
+    dead_code: warning
+    missing_required_param: error
+    unused_local_variable: warning
+    invalid_assignment: error
+    parameter_assignments: warning
+  exclude:
+    - "**/*.g.dart"        # Ignore generated files
+    - "**/*.freezed.dart"  # Ignore freezed generated files
+    - "**/*.gr.dart"
+    - "build/**"
+
 linter:
   # The lint rules applied to this project can be customized in the
   # section below to disable rules from the `package:flutter_lints/flutter.yaml`
@@ -21,8 +35,43 @@ linter:
   # `// ignore_for_file: name_of_lint` syntax on the line or in the file
   # producing the lint.
   rules:
-    # avoid_print: false  # Uncomment to disable the `avoid_print` rule
-    # prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
+     avoid_print: false  # Uncomment to disable the `avoid_print` rule
+     prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
+     always_use_package_imports: true
+     avoid_redundant_argument_values: true
+     avoid_returning_null_for_future: true
+     avoid_slow_async_io: true
+     avoid_types_on_closure_parameters: true
+     await_only_futures: true
+     cancel_subscriptions: true
+     close_sinks: true
+     comment_references: true
+     constant_identifier_names: false
+     curly_braces_in_flow_control_structures: true
+     depend_on_referenced_packages: true
+     diagnostic_describe_all_properties: true
+     empty_statements: true
+     file_names: true
+     flutter_style_todos: true
+     hash_and_equals: true
+     join_return_with_assignment: true
+     library_prefixes: true
+     no_leading_underscores_for_local_identifiers: true
+     non_constant_identifier_names: false
+     omit_local_variable_types: true
+     prefer_const_constructors: true
+     prefer_const_declarations: true
+     prefer_const_literals_to_create_immutables: true
+     prefer_final_fields: true
+     prefer_final_in_for_each: true
+     prefer_final_locals: true
+     sized_box_for_whitespace: true
+     sort_child_properties_last: true
+     sort_constructors_first: true
+     type_annotate_public_apis: true
+     unnecessary_brace_in_string_interps: true
+     unnecessary_lambdas: true
+     use_key_in_widget_constructors: true
 
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options
